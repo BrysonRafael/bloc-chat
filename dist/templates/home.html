@@ -1,8 +1,4 @@
 <h1>Home Page</h1>
-<div ng-controller="RoomController">
-  <ol>
-  	<li ng-repeat="room | filter:name">
-  		<ui-view></ui-view>
-  	</li>
-  </ol>
-</div>
+<ol>
+	<li ng-repeat="room in ctrl.rooms">{{ room.$value }}</li>
+</ol>
