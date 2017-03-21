@@ -21,5 +21,6 @@ angular
 
 blocChat.controller('RoomController', ['$state', 'Room', function ($state, Room) {
 	this.rooms = Room.all;
+	
 }])
 
