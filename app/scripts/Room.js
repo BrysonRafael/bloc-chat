@@ -11,6 +11,13 @@
     return {
       all: rooms
     };
+
+    rooms.submit = function () {
+      if (rooms.text) {
+          rooms.list.push(this.text);
+          rooms.text = '';
+      }
+    }
   }
 
   angular
