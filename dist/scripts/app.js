@@ -1,5 +1,3 @@
-var blocChat = angular.module('blocChat', [ 'ui.router', 'firebase' ]);
-
 function config($stateProvider, $locationProvider) {
 	$locationProvider
 		.html5Mode({
@@ -15,11 +13,25 @@ function config($stateProvider, $locationProvider) {
 		})
 }
 
-angular
-	.module('blocChat')
+var blocChat = angular
+	.module('blocChat', [ 'ui.router', 'ui.bootstrap', 'firebase' ])
 	.config(config);
 
-blocChat.controller('RoomController', ['$state', 'Room', function ($state, Room) {
-	this.rooms = Room.all;
-}])
+blocChat.controller('RoomController', ['$state', 'Room', '$uibModal', 
+	function ($state, Room, $uibModal) {
+		this.rooms = Room.all;
+
+		this.addRoom = function addRoom() {
+		    var modalInstance = $uibModal.open({
+		      templateUrl: '/templates/modal.html',
+		      controller: 'ModalController',
+		      controllerAs: 'modal'
+		    });
+
+		    modalInstance.result.then(function(roomName) {
+		    	Room.add(roomName);
+		    });
+		}; //- addRoom()
+	}
+]);
 
