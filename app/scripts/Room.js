@@ -9,7 +9,7 @@
     // });
 
     var add = function add(roomName) {
-      // TODO: Fill in teh codez
+      rooms.$add(roomName);// TODO: Fill in teh codez
     }; //- add()
 
     return {
