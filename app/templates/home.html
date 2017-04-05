@@ -1,5 +1,8 @@
 <h1>Home Page</h1>
 <button type="button" ng-click="ctrl.addRoom()">Add New Room</button>
 <ol>
-	<li ng-repeat="room in ctrl.rooms">{{ room.$value }}</li>
+    <li ng-repeat="room in ctrl.rooms">
+        <a href="javascript:void(0);" ng-click="ctrl.setRoom(room.$id)">{{ room.$value }}</a>
+    </li>
 </ol>
+<div ng-repeat="message in ctrl.messages">{{ message.user }}: {{ message.message }}</div>
