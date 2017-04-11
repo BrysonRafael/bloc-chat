@@ -18,6 +18,10 @@ function BlocChatCookies($cookies, $uibModal) {
     if (!currentUser || currentUser === '') {
       $uibModal.open({
         // Modal configuration object properties
+        templateUrl: '/templates/NameModal.html',
+        controller: 'NameModalController',
+        controllerAs: 'modal'
+
       })
     }
   }

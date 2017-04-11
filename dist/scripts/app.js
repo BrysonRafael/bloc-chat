@@ -13,18 +13,23 @@ function config($stateProvider, $locationProvider) {
         })
 }
 
-function BlocChatCookies($cookies) {
+function BlocChatCookies($cookies, $uibModal) {
     var currentUser = $cookies.get('blocChatCurrentUser');
     if (!currentUser || currentUser === '') {
-      // Do something to allow users to set their username
-      currentUser = prompt("Please enter your username", "");
+      $uibModal.open({
+        // Modal configuration object properties
+        templateUrl: '/templates/NameModal.html',
+        controller: 'NameModalController',
+        controllerAs: 'modal'
+
+      })
     }
   }
 
 var blocChat = angular
     .module('blocChat', ['ui.router', 'ui.bootstrap', 'firebase', 'ngCookies'])
     .config(config);
-    .run(['$cookies', BlocChatCookies]);
+    .run(['$cookies', '$uibModal', BlocChatCookies]);
 
 blocChat.controller('RoomController', ['$state', 'Room', 'Message', '$uibModal',
     function($state, Room, Message, $uibModal) {
