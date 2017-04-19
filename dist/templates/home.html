@@ -5,4 +5,6 @@
         <a href="javascript:void(0);" ng-click="ctrl.setRoom(room.$id)">{{ room.$value }}</a>
     </li>
 </ol>
+<textarea ng-model="ctrl.messageText"></textarea>
+<button type="button" ng-click="ctrl.send(ctrl.messageText)">Send</button>
 <div ng-repeat="message in ctrl.messages">{{ message.user }}: {{ message.message }}</div>
